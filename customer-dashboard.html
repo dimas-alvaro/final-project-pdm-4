@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Dashboard</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feather icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="customer-dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-left">
+          <a href="#" id="bell"><i data-feather="bell"></i></a>
+        </div>
+        <div class="header-right">
+          <a href="#" id="refresh-cw" onclick="nextStep('order-history')">
+            <i data-feather="refresh-cw"></i>
+          </a>
+          <!-- History Icon -->
+        </div>
+      </header>
+
+      <!-- Layanan -->
+      <div id="services">
+        <div class="service-item">
+          <img src="img/a.jpg" alt="Cuci Kering" />
+          <div class="service-info">
+            <h3>Cuci Kering</h3>
+            <p>3000/kg</p>
+          </div>
+          <button
+            class="add-button"
+            data-service="Cuci Kering"
+            data-price="3000"
+          >
+            Tambahkan
+          </button>
+        </div>
+        <div class="service-item">
+          <img src="img/b.jpg" alt="Cuci Lipat" />
+          <div class="service-info">
+            <h3>Cuci Lipat</h3>
+            <p>4500/kg</p>
+          </div>
+          <button
+            class="add-button"
+            data-service="Cuci Lipat"
+            data-price="4500"
+          >
+            Tambahkan
+          </button>
+        </div>
+        <div class="service-item">
+          <img src="img/c.jpg" alt="Setrika" />
+          <div class="service-info">
+            <h3>Setrika</h3>
+            <p>4000/kg</p>
+          </div>
+          <button class="add-button" data-service="Setrika" data-price="4000">
+            Tambahkan
+          </button>
+        </div>
+      </div>
+
+      <!-- Input Jumlah Pakaian -->
+      <div id="enter-quantity" style="display: none">
+        <h2>Masukkan Jumlah Pakaian</h2>
+        <div id="quantity-input-container"></div>
+        <button type="button" onclick="nextStep('choose-speed')">Simpan</button>
+      </div>
+
+      <!-- Pilih Kecepatan Layanan -->
+      <div id="choose-speed" style="display: none">
+        <h2>Pilih Kecepatan Layanan</h2>
+        <form id="service-speed-form">
+          <label
+            ><input type="radio" name="service-speed" value="Reguler" />
+            Reguler</label
+          >
+          <label
+            ><input type="radio" name="service-speed" value="Kilat" /> Kilat
+            (+5000)</label
+          >
+          <label
+            ><input type="radio" name="service-speed" value="Express" /> Express
+            (+8000)</label
+          >
+        </form>
+        <button type="button" onclick="nextStep('customer-details')">
+          Selanjutnya
+        </button>
+      </div>
+
+      <!-- Customer Details Form -->
+      <div id="customer-details" style="display: none">
+        <h2>Masukkan Data Pelanggan</h2>
+        <form id="details-form">
+          <input
+            type="text"
+            id="customer-name"
+            placeholder="Nama Pelanggan"
+            required
+          />
+          <input
+            type="text"
+            id="customer-address"
+            placeholder="Alamat"
+            required
+          />
+          <input
+            type="text"
+            id="customer-phone"
+            placeholder="Nomor Telepon"
+            required
+          />
+          <button type="submit">Simpan</button>
+        </form>
+      </div>
+
+      <!-- Payment Section -->
+      <div id="payment" style="display: none">
+        <h2>Pilih Metode Pembayaran</h2>
+        <form id="payment-form">
+          <div class="payment-method">
+            <label
+              ><input
+                type="radio"
+                name="payment-method"
+                value="emoney"
+                required
+              />
+              E-money</label
+            >
+            <label
+              ><input type="radio" name="payment-method" value="transfer" />
+              Transfer Bank</label
+            >
+          </div>
+          <button type="button" onclick="makePayment('receipt')">
+            Konfirmasi Pembayaran
+          </button>
+        </form>
+      </div>
+
+      <!-- Receipt -->
+      <div id="receipt" style="display: none">
+        <div class="container">
+          <h2>NOTA</h2>
+          <p>Nama : <span id="receipt-name"></span></p>
+          <p>Alamat : <span id="receipt-address"></span></p>
+          <p>Nomor Telepon : <span id="receipt-phone"></span></p>
+          <p>Pesanan : <span id="receipt-detail"></span></p>
+          <p>Total : <span id="receipt-total"></span></p>
+          <button onclick="nextStep('confirm-receipt')">Diterima</button>
+        </div>
+      </div>
+
+      <!-- Confirm Receipt -->
+      <div id="confirm-receipt" style="display: none">
+        <h2>Konfirmasi barang</h2>
+        <p>Apakah laundry sudah diterima kembali?</p>
+        <button type="button" onclick="confirmReceived()">Ya, Sudah!</button>
+        <button type="button" onclick="nextStep('review')">
+          Belum Menerima!
+        </button>
+      </div>
+
+      <!-- Review Section -->
+      <div id="review" style="display: none">
+        <h2>Berikan Ulasan</h2>
+        <textarea id="review-text" placeholder="Ulasan anda..."></textarea>
+        <button id="submit-review" onclick="submitReview('')">
+          Kirim Ulasan
+        </button>
+      </div>
+
+      <!-- Order History Section -->
+      <div id="order-history" style="display: none">
+        <h2>Riwayat Pesanan</h2>
+        <ul id="history-list">
+          <!-- Order history items will be dynamically added here -->
+        </ul>
+        <button onclick="closeOrderHistory('service')">Tutup</button>
+      </div>
+    </div>
+    <!-- Feather icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <script src="customer-dashboard.js"></script>
+  </body>
+</html>

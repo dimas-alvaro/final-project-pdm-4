@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riwayat Pemesanan Laundry</title>
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0f7fa, #80deea);
+      color: #333;
+      animation: fadeBackground 5s infinite alternate;
+    }
+
+    @keyframes fadeBackground {
+      0% {
+        background: linear-gradient(135deg, #e0f7fa, #80deea);
+      }
+      100% {
+        background: linear-gradient(135deg, #80deea, #e0f7fa);
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      animation: zoomIn 1s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    h1, h3 {
+      text-align: center;
+      color: #444;
+      animation: slideDown 1.5s ease-in-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Order History Table */
+    .order-history table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .order-history th, .order-history td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      animation: fadeInRow 0.8s ease-in-out;
+    }
+
+    .order-history th {
+      background-color: #78b3ce;
+      color: white;
+    }
+
+    .order-history td {
+      background-color: #f9f9f9;
+    }
+
+    @keyframes fadeInRow {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Back to Dashboard Button */
+    .back-btn {
+      display: inline-block;
+      width: auto;
+      margin: 10px 0;
+      padding: 10px 20px;
+      background-color: #f96e2a;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      animation: fadeInButton 2s ease-in-out;
+    }
+
+    .back-btn:hover {
+      background-color: #e65d1a;
+    }
+
+    @keyframes fadeInButton {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Riwayat Pemesanan Laundry</h1>
+    <div class="order-history">
+      <h3>Riwayat Pemesanan</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Customer</th>
+            <th>Nomor Telepon</th>
+            <th>Alamat</th>
+            <th>Jenis Layanan</th>
+            <th>Kecepatan</th>
+          </tr>
+        </thead>
+        <tbody id="orderHistory"></tbody>
+      </table>
+    </div>
+    <a href="owner-dashboard.html" class="back-btn">Kembali ke Dashboard</a>
+  </div>
+
+  <script src="riwayat.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layanan</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "P", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 12px 25px;
+            background-color: #f96e2a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #e65d1a;
+            transform: translateY(-2px);
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            animation: slideIn 0.8s ease;
+        }
+
+        .services {
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-item {
+            margin-bottom: 20px;
+            background-color: #f2f2f2;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .service-description {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .service-price {
+            font-size: 18px;
+            color: #f96e2a;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Button -->
+        <a href="owner-dashboard.html" class="back-btn">← Kembali ke Dashboard Owner</a>
+
+        <h3>Layanan yang Tersedia</h3>
+        <div class="services">
+            <div class="service-item">
+                <div class="service-title">Cuci Kering</div>
+                <div class="service-description">Layanan cuci kering untuk pakaian yang tidak bisa dicuci menggunakan air. Cocok untuk bahan sensitif seperti sutra, wol, dan lainnya.</div>
+                <div class="service-price">Rp 3,000/kg</div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-title">Cuci Lipat</div>
+                <div class="service-description">Pakaian dicuci dengan air dan deterjen, lalu dilipat rapi siap pakai. Layanan ini cocok untuk pakaian sehari-hari seperti kaos, celana, dan lainnya.</div>
+                <div class="service-price">Rp 4,500/kg</div>
+            </div>
+
+            <div class="service-item">
+                <div class="service-title">Setrika</div>
+                <div class="service-description">Layanan setrika untuk pakaian yang sudah dicuci, membuatnya rapi dan siap digunakan. Cocok untuk pakaian formal atau yang membutuhkan perawatan khusus.</div>
+                <div class="service-price">Rp 4,000/kg</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="layanan.js"></script>
+</body>
+</html>

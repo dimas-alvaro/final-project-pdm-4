@@ -1,0 +1,246 @@
+/* General Styles */
+body {
+  font-family: "P", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+header {
+  background-color: #78b3ce;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.history-icon,
+.sales-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+}
+
+.history-icon img,
+.sales-icon img {
+  width: 30px;
+  height: auto;
+}
+
+/* Owner Info Section */
+/* Owner Info */
+
+/* Address Bar */
+.address-bar,
+.owner-info,
+.phone-number {
+  background-color: #c9e6f0;
+  padding: 10px;
+  display: flex; /* Menggunakan flexbox untuk menata nama dan nomor telepon dalam satu bar */
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.address-bar h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* Address */
+.address {
+  background-color: #c9e6f0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Sales Report Container */
+.sales-report {
+  background-color: #f96e2a;
+  padding: 10px;
+  display: flex; /* Menggunakan flexbox untuk menata nama dan nomor telepon dalam satu bar */
+  justify-content: space-around;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 40px;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  margin: 0;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sales-report h3 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #78b3ce;
+  text-align: center;
+}
+
+.sales-report p {
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Feature Buttons */
+.features {
+  display: flex;
+  justify-content: space-between; /* Tombol-tombol diatur merata */
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: nowrap; /* Pastikan tombol tetap di satu baris */
+}
+
+.features a {
+  background-color: #f96e2a;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 0 10px;
+  white-space: nowrap; /* Mencegah teks tombol dibungkus ke baris baru */
+  flex: 1; /* Membuat tombol mengambil ruang yang sama */
+}
+
+.features a:hover {
+  background-color: #e65d1a;
+}
+
+/* Styling tombol yang pertama dan terakhir, tanpa margin tambahan */
+.features a:first-child {
+  margin-left: 0;
+}
+
+.features a:last-child {
+  margin-right: 0;
+}
+/* Pilihan Fitur */
+.feature-container {
+  display: flex; /* Menyusun pilihan fitur dalam satu baris */
+  justify-content: space-around; /* Memberikan jarak yang seimbang antar tombol */
+  gap: 20px; /* Menambahkan jarak antar tombol */
+  margin-bottom: 30px;
+}
+
+.feature-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f96e2a; /* Warna latar belakang tombol */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.feature-btn:hover {
+  background-color: #e15d1e; /* Efek hover untuk tombol */
+}
+
+/* Orders Section */
+.orders {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.orders h3 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #333;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.orders-table th {
+  background-color: #78b3ce;
+  color: white;
+  font-size: 18px;
+}
+
+.orders-table td {
+  font-size: 16px;
+}
+
+.orders-table .status {
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.orders-table .Menunggu {
+  background-color: #f96e2a;
+  color: white;
+}
+
+.orders-table .Sedang-Diproses {
+  background-color: #78b3ce;
+  color: white;
+}
+
+.orders-table .Selesai {
+  background-color: #28a745;
+  color: white;
+}
+
+.orders-table .Pesanan-Diantar {
+  background-color: #ffc107;
+  color: white;
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f96e2a;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.back-btn:hover {
+  background-color: #e65d1a;
+}

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesanan Masuk</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .orders-table th {
+            background-color: #80deea;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .orders-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            text-transform: capitalize;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .Menunggu {
+            background-color: #80deea;
+        }
+
+        .Sedang-Diproses {
+            background-color: #4db6ac;
+        }
+
+        .Selesai {
+            background-color: #26a69a;
+        }
+
+        .update-btn,
+        .revert-btn {
+            padding: 10px 15px;
+            background-color: #80deea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            font-size: 14px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .update-btn:hover,
+        .revert-btn:hover {
+            background-color: #f96e;
+            transform: scale(1.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .back-btn {
+            display: inline-block;
+            width: auto;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #f96e2a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            animation: fadeInButton 2s ease-in-out;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #e65d1a;
+        }
+
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 100%;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .modal-content h4 {
+            margin-top: 0;
+        }
+
+        .modal button {
+            padding: 8px 15px;
+            background-color: #80deea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .modal button:hover {
+            background-color: #f96e;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Pesanan Masuk</h3>
+        
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Customer</th>
+                    <th>Detail Pakaian</th>
+                    <th>Catatan</th>
+                    <th>Kecepatan</th>
+                    <th>Status</th>
+                    <th>Update Status</th>
+                </tr>
+            </thead>
+            <tbody id="orders-tbody">
+                <tr id="order1">
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>Cuci Lipat, 3 baju</td>
+                    <td>Urgent</td>
+                    <td>Reguler</td>
+                    <td><span id="status1" class="status Menunggu">Menunggu</span></td>
+                    <td>
+                        <button class="update-btn" data-order-id="1">Update</button>
+                        <button class="revert-btn" data-order-id="1">Revert</button>
+                    </td>
+                </tr>
+                <tr id="order2">
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>Cuci Kering, 2 celana</td>
+                    <td>Express</td>
+                    <td>Kilat</td>
+                    <td><span id="status2" class="status Sedang-Diproses">Sedang Diproses</span></td>
+                    <td>
+                        <button class="update-btn" data-order-id="2">Update</button>
+                        <button class="revert-btn" data-order-id="2">Revert</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a href="owner-dashboard.html" class="back-btn">Kembali ke Dashboard</a>
+
+    <!-- Modal for confirmation -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <h4>Apakah Anda yakin ingin memindahkan pesanan ini ke riwayat?</h4>
+            <button id="confirm-btn">Ya</button>
+            <button id="cancel-btn">Batal</button>
+        </div>
+    </div>
+
+    <script>
+        const ordersTable = document.getElementById("orders-tbody");
+        const completedOrders = [];
+        const modal = document.getElementById("confirmation-modal");
+        const confirmBtn = document.getElementById("confirm-btn");
+        const cancelBtn = document.getElementById("cancel-btn");
+        let currentOrderId = null;
+
+        // Function to move order to history
+        function moveOrderToHistory(orderId) {
+            const row = document.getElementById(`order${orderId}`);
+            const cells = row.querySelectorAll("td");
+            const orderDetails = {
+                no: cells[0].textContent,
+                customer: cells[1].textContent,
+                detail: cells[2].textContent,
+                note: cells[3].textContent,
+                speed: cells[4].textContent,
+                status: "Selesai"
+            };
+            completedOrders.push(orderDetails);
+            row.remove();
+            alert("Pesanan telah dipindahkan ke Riwayat Pemesanan");
+            console.log("Riwayat Pesanan:", completedOrders);
+        }
+
+        // Show confirmation modal
+        function showConfirmationModal(orderId) {
+            currentOrderId = orderId;
+            modal.style.display = "flex";
+        }
+
+        // Close modal
+        function closeModal() {
+            modal.style.display = "none";
+            currentOrderId = null;
+        }
+
+        // Update order status
+        document.querySelectorAll(".update-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const orderId = this.getAttribute("data-order-id");
+                const statusElement = document.getElementById(`status${orderId}`);
+                const currentStatus = statusElement.textContent;
+
+                if (currentStatus === "Menunggu") {
+                    statusElement.textContent = "Sedang Diproses";
+                    statusElement.className = "status Sedang-Diproses";
+                } else if (currentStatus === "Sedang Diproses") {
+                    statusElement.textContent = "Selesai";
+                    statusElement.className = "status Selesai";
+                    showConfirmationModal(orderId);
+                }
+            });
+        });
+
+        // Revert order status
+        document.querySelectorAll(".revert-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const orderId = this.getAttribute("data-order-id");
+                const statusElement = document.getElementById(`status${orderId}`);
+                statusElement.textContent = "Menunggu";
+                statusElement.className = "status Menunggu";
+            });
+        });
+
+        // Confirm button in modal
+        confirmBtn.addEventListener("click", function () {
+            moveOrderToHistory(currentOrderId);
+            closeModal();
+        });
+
+        // Cancel button in modal
+        cancelBtn.addEventListener("click", closeModal);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan Keuangan</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #eaf4f9; /* Soft blue background */
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 950px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 25px;
+            background-color: #f96e2a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #e65d1a;
+            transform: translateY(-4px);
+        }
+
+        h3 {
+            text-align: center;
+            color: #005f73;
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: bold;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        /* Report Container */
+        .report {
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+        .report p {
+            font-size: 20px;
+            color: #333;
+            margin: 15px 0;
+            opacity: 0;
+            animation: fadeInText 1s ease forwards;
+            transition: transform 0.3s ease;
+        }
+
+        .report p:hover {
+            transform: scale(1.05);
+            color: #005f73;
+        }
+
+        .highlight {
+            color: #0d5c63;
+            font-weight: bold;
+        }
+
+        .statistics {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .statistics p {
+            width: 45%;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .statistics .highlight {
+            font-size: 1.2em;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 16px;
+            color: #888;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+
+            h3 {
+                font-size: 26px;
+            }
+
+            .report {
+                padding: 20px;
+            }
+
+            .statistics p {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Button -->
+        <a href="owner-dashboard.html" class="back-btn">← Kembali ke Dashboard Owner</a>
+
+        <h3>Laporan Keuangan</h3>
+
+        <div class="report">
+            <!-- Financial Report -->
+            <div class="statistics">
+                <p>Total Pendapatan: <span class="highlight">Rp 5,000,000</span></p>
+                <p>Pengeluaran: <span class="highlight">Rp 2,000,000</span></p>
+            </div>
+            <div class="statistics">
+                <p>Keuntungan: <span class="highlight">Rp 3,000,000</span></p>
+                <p>Persentase Keuntungan: <span class="highlight">60%</span></p>
+            </div>
+            <div class="statistics">
+                <p>Jumlah Transaksi: <span class="highlight">150</span></p>
+                <p>Rata-rata Transaksi: <span class="highlight">Rp 33,333</span></p>
+            </div>
+            <div class="statistics">
+                <p>Jumlah Pembayaran Tunai: <span class="highlight">80</span></p>
+                <p>Jumlah Pembayaran Digital: <span class="highlight">70</span></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Usy's Laundry. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Simulate loading data with a timeout
+            const reportElements = document.querySelectorAll('.report p');
+            setTimeout(() => {
+                reportElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.style.opacity = 1; // Fade-in effect
+                    }, index * 500); // Staggered effect
+                });
+            }, 500); // Delay before showing data
+        });
+    </script>
+</body>
+</html>
+    
